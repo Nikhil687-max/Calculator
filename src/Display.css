@@ -1,0 +1,13 @@
+.display *{
+    text-align: right;
+}
+
+.display h1{
+    font-size: 40px;
+}
+
+.specialInput{
+    position: absolute;
+    z-index: -1;
+    font-size: 2.4rem;
+}

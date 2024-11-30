@@ -1,0 +1,22 @@
+.rows{
+    .btn{
+        font-size: 30px; 
+    }
+    display: flex;
+    flex-direction: column;
+    *{/*row0-3*/
+        display: flex;
+        border: 1px solid white;
+        justify-content: center;
+        *{/*button*/
+            min-width: 120px;
+            border-left: 1px solid whitesmoke;
+            border-right: 1px solid whitesmoke;
+            min-height: 50px;
+            background-color: rgb(212, 139, 249);
+            box-shadow: 5px 5px 20px rgb(39, 9, 48);
+            text-shadow: 1px 0 3px rgb(219, 191, 223);
+            text-align: center;
+        }
+    }
+}
