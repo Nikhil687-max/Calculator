@@ -1,5 +1,5 @@
 import Calculator from './Calculator'
-import Display from './Dispay'
+import Display from './Display'
 import './App.css'
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <div className="display">
         <Display></Display>
       </div>
-      <Calculator/>
+      {/* <Calculator/> */}
       <h2 style={{fontSize: 12,marginTop: 100}}>@nikhilpatidar</h2>
       
     </>

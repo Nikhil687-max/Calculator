@@ -3,101 +3,111 @@ import './Calculator.css'
 export let s = "";
 export let ans = 0;
 export let prans = 0;
+
 function Calculator(){
     function append(c)
     {
-
         if(c == 'c'){
-            prans = ans;
-            ans = 0;
-            s = "";
-
+            document.getElementById("PrevOutput").value = "";
+            document.getElementById("Expression").value = 0;
+            document.getElementById("Output").value = "";
         }
         else if(c == 'm'){
-            prans = ans;
+            document.getElementById("PrevOutput").value = ans;
             if(ans < 0){
                 ans *= -1;
             }
+            document.getElementById("Output").value = ans;
         }
+        else if(c == '='){
+            document.getElementById("PrevOutput").value = s;
+            document.getElementById("Expression").value = ans;
+            document.getElementById("Output").value = "";
+        }
+        else {
+            s+= c;
+            document.getElementById("PrevOutput").value = ans;
+            document.getElementById("Expression").value = s;
+            document.getElementById("Output").value = calculate(s);
+        }
+        
+
     }
     return (
         <>
             <div className="rows">
                 <div className="row0">
-                    <div className="btn" onClick={append('c')}>
+                    <button className="btn" onClick="append('c')">
                         c
-                    </div>
-                    <div className="btn" onClick={append('m')}>
+                    </button>
+                    <button className="btn" onClick="append('m')">
                         mod
-                    </div>
-                    <div className="btn" onClick={append('%')}>
+                    </button>
+                    <button className="btn" onClick="append('%')">
                         %
-                    </div>
-                    <div className="btn" onClick={append('-')}>
+                    </button>
+                    <button className="btn" onClick="append('-')">
                         -
-                    </div>
+                    </button>
                 </div>
                 <div className="row1">
-                    <div className="btn" onClick={append('1')}>
+                    <button className="btn" onClick="append('1')">
                         1
-                    </div>
-                    <div className="btn" onClick={append('2')}>
+                    </button>
+                    <button className="btn" onClick="append('2')">
                         2
-                    </div>
-                    <div className="btn" onClick={append('3')}>
+                    </button>
+                    <button className="btn" onClick="append('3')">
                         3
-                    </div>
-                    <div className="btn" onClick={append('+')}>
+                    </button>
+                    <button className="btn" onClick="append('+')">
                         +
-                    </div>
+                    </button>
                 </div>
                 <div className="row2">
-                    <div className="btn" onClick={append('4')}>
+                    <button className="btn" onClick="append('4')">
                         4
-                    </div>
-                    <div className="btn" onClick={append('5')}>
+                    </button>
+                    <button className="btn" onClick="append('5')">
                         5
-                    </div>
-                    <div className="btn" onClick={append('6')}>
+                    </button>
+                    <button className="btn" onClick="append('6')">
                         6
-                    </div>
-                    <div className="btn" onClick={append('*')}>
+                    </button>
+                    <button className="btn" onClick="append('*')">
                         *
-                    </div>
+                    </button>
                 </div>
                 <div className="row3">
-                    <div className="btn" onClick={append('7')}>
+                    <button className="btn" onClick="append('7')">
                         7
-                    </div>
-                    <div className="btn" onClick={append('8')}>
+                    </button>
+                    <button className="btn" onClick="append('8')">
                         8
-                    </div>
-                    <div className="btn" onClick={append('9')}>
+                    </button>
+                    <button className="btn" onClick="append('9')">
                         9
-                    </div>
-                    <div className="btn" onClick={append('/')}>
+                    </button>
+                    <button className="btn" onClick="append('/')">
                         /
-                    </div>
+                    </button>
                 </div>
                 <div className="row4">
                     <div className="btn">
                         
                     </div>
-                    <div className="btn" onClick={append('0')}>
+                    <button className="btn" onClick="append('0')">
                         0
-                    </div>
+                    </button>
                     <div className="btn">
                         
                     </div>
-                    <div className="btn" onClick={append('=')}>
+                    <button className="btn" onClick="append('=')">
                         =
-                    </div>
+                    </button>
                 </div>
             </div>
         </>
     )
 }
-Calculator();
-
-
 export default Calculator
