@@ -1,0 +1,1 @@
+document.getElementsByClassName('root').textContent = "Hi to all";
