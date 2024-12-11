@@ -1,4 +1,3 @@
-import Calculator from './Calculator'
 import Display from './Display'
 import './App.css'
 

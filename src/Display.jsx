@@ -1,132 +1,96 @@
 import './Display.css'
-import calculate from './calculate';
-import './Calculator.css'
+
 let s = "";
 let ans = 0;
-let prans = 0;
+let pans = 0;
 
+function ifError(s){return 1;}
+function isCalculate(s){return 1;}
+function calculate(s){return s[0];}
 
-
-function append(c)
-{
-    if(c == 'c'){
-        document.getElementById("PrevOutput").value = "";
-        prans = ans;
-        document.getElementById("Expression").value = 0;
+function append(x){
+    console.log(x);
+    if(x === 'C'){
+        document.getElementById('prev').textContent = ans;
+        document.getElementById('exp').textContent = "";
+        document.getElementById('ans').textContent = 0;
         s = "";
-        document.getElementById("Output").value = "";
+        pans = ans;
         ans = 0;
     }
-    else if(c == 'm'){
-        prans = ans;
-        document.getElementById("PrevOutput").value = ans;
+    else if(x === 'M'){
         if(ans < 0){
+            document.getElementById('prev').textContent = ans;
+            pans = ans;
             ans *= -1;
+            document.getElementById('exp').textContent = 'ans*(-1)';
+            document.getElementById('ans').textContent = ans;
+            s = "ans";
         }
-        s = "";
-        document.getElementById("Expression").value = ans;
-        document.getElementById("Output").value = "";
     }
-    else if(c == '='){
-        document.getElementById("PrevOutput").value = s;
-        document.getElementById("Expression").value = ans;
-        document.getElementById("Output").value = "";
-        s = "";
+    else if(x === '='){
+        document.getElementById('prev').textContent = s;
+        document.getElementById('exp').textContent = "";
+        document.getElementById('ans').textContent = ans;
+        s = 'ans '
+    }
+    else 
+    {
+        s+= x;
+        document.getElementById('exp').textContent = s;
+        if(isCalculate(s)){
+            pans = ans;
+            ans = calculate(s);
+            document.getElementById('prev').textContent = pans;
+            document.getElementById('ans').textContent = ans;
+        }
+        else if(ifError(s)){
+            document.getElementById('prev').textContent = "";
+            document.getElementById('exp').textContent = "SYNTeX ERROR";
+            document.getElementById('ans').textContent = "";
+        }
+    }
 
-    }
-    else {
-        s+= c;
-        document.getElementById("PrevOutput").value = ans;
-        document.getElementById("Expression").value = s;
-        document.getElementById("Output").value = calculate(s);
-        prans = ans;
-        ans = document.getElementById("Output");
-    }
 }
 
-function Display()
-{
 
-    return(
+function Display(){
+    return (
         <>
-            <h1 style={{marginTop: "50px"}}></h1>
-            <h3 className="PrevOutput">ans = {prans}</h3>
-            <div className="mainExpression" style={{display:'flex',justifyContent:'flex-end'}}>
-                <input type="text" className="specialInput" placeholder='|' name="" onInput="append('document.getElementById('specialInput').value[0]')" id="" onInputCapture="append('document.getElementById('specialInput').value[0]')" style={{border: 2,zIndex: 1,opacity: 1,minHeight: 90,minWidth:330,maxWidth:400}} />
-                <h1 className="Expression" style={{paddingRight: 13}}>{s}</h1>
+            <div id='n'>
+                <h1 id="prev" className="main"></h1>
+                <h1 id="exp" className="main"></h1>
+                <h1 id="ans" className="main"></h1>
             </div>
-            <h3 className="Output">{ans}</h3>
-            <div className="rows">
-                <div className="row0">
-                    <button className="btn" onClick="append('c')">
-                        c
-                    </button>
-                    <button className="btn" onClick="append('m')">
-                        mod
-                    </button>
-                    <button className="btn" onClick="append('%')">
-                        %
-                    </button>
-                    <button className="btn" onClick="append('-')">
-                        -
-                    </button>
-                </div>
-                <div className="row1">
-                    <button className="btn" onClick="append('1')">
-                        1
-                    </button>
-                    <button className="btn" onClick="append('2')">
-                        2
-                    </button>
-                    <button className="btn" onClick="append('3')">
-                        3
-                    </button>
-                    <button className="btn" onClick="append('+')">
-                        +
-                    </button>
-                </div>
-                <div className="row2">
-                    <button className="btn" onClick="append('4')">
-                        4
-                    </button>
-                    <button className="btn" onClick="append('5')">
-                        5
-                    </button>
-                    <button className="btn" onClick="append('6')">
-                        6
-                    </button>
-                    <button className="btn" onClick="append('*')">
-                        *
-                    </button>
-                </div>
-                <div className="row3">
-                    <button className="btn" onClick="append('7')">
-                        7
-                    </button>
-                    <button className="btn" onClick="append('8')">
-                        8
-                    </button>
-                    <button className="btn" onClick="append('9')">
-                        9
-                    </button>
-                    <button className="btn" onClick="append('/')">
-                        /
-                    </button>
-                </div>
-                <div className="row4">
-                    <div className="btn">
-                        
-                    </div>
-                    <button className="btn" onClick="append('0')">
-                        0
-                    </button>
-                    <div className="btn">
-                        
-                    </div>
-                    <button className="btn" onClick="append('=')">
-                        =
-                    </button>
-                </div>
+            <div id="row1" style={{display:"flex"}}>
+                <div id="btn" onClick={() => append('C')}>C</div>
+                <div id="btn" onClick={() => append('M')}>Mod</div>
+                <div id="btn" onClick={() => append('%')}>%</div>
+                <div id="btn" onClick={() => append('+')}>+</div>
+            </div>
+            <div id="row2" style={{display:"flex"}}>
+                <div id="btn" onClick={() => append('9')}>9</div>
+                <div id="btn" onClick={() => append('8')}>8</div>
+                <div id="btn" onClick={() => append('7')}>7</div>
+                <div id="btn" onClick={() => append('-')}>-</div>
+            </div>
+            <div id="row3" style={{display:"flex"}}>
+                <div id="btn" onClick={() => append('6')}>6</div>
+                <div id="btn" onClick={() => append('5')}>5</div>
+                <div id="btn" onClick={() => append('4')}>4</div>
+                <div id="btn" onClick={() => append('*')}>*</div>
+            </div>
+            <div id="row4" style={{display:"flex"}}>
+                <div id="btn" onClick={() => append('3')}>3</div>
+                <div id="btn" onClick={() => append('2')}>2</div>
+                <div id="btn" onClick={() => append('1')}>1</div>
+                <div id="btn" onClick={() => append('/')}>/</div>
+            </div>
+            <div id="row5" style={{display:"flex"}}>
+                <div id="btn"> </div>
+                <div id="btn" onClick={() => append('0')}>0</div>
+                <div id="btn"> </div>
+                <div id="btn" onClick={() => append('=')}>=</div>
             </div>
         </>
     )
