@@ -100,32 +100,14 @@ function Display(){
                 <h1 id="ans" className="main"></h1>
             </div>
             <div id="row0" style={{display:"flex"}}>
-                <div id="btn" onClick={() => append('(')}>M+</div>
-                <div id="btn" onClick={() => append('0')}>M-</div>
-                <div id="btn" onClick={() => append(')')}>MR</div>
-                <div id="btn" onClick={() => append('=')}>MC</div>
+                <div id="btn" onClick={() => append('')}>M+</div>
+                <div id="btn" onClick={() => append('')}>M-</div>
+                <div id="btn" onClick={() => append('')}>MR(recall)</div>
+                <div id="btn" onClick={() => append('')}>MC</div>
             </div>
 
 
 
-            <div id="row01" style={{display:"flex", marginLeft: 150}}>
-                <div id="btn" onClick={() => append('^')}>/\</div>
-                <div id="btn" onClick={() => append('b')}>del</div>
-
-            </div>
-            <div id="row02" style={{display:"flex", marginLeft: 48}}>
-                <div id="btn" onClick={() => append('<-')}>/</div>
-                <div id="btn" onClick={() => append('++')}>++</div>
-                <div id="btn" onClick={() => append('<-')}>\</div>
-            </div> 
-            <div id="row02" style={{display:"flex", marginLeft: 48}}>
-                <div id="btn" onClick={() => append('<-')}>\</div>
-                <div id="btn" onClick={() => append('--')}>--</div>
-                <div id="btn" onClick={() => append('->')}>/</div>
-            </div>
-            <div id="row03" style={{display:"flex", marginLeft: 150}}>
-                <div id="btn" onClick={() => append('6')}>\/</div>
-            </div>
 
 
             <div id="row1" style={{display:"flex"}}>
